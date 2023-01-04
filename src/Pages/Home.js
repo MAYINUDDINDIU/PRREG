@@ -3,12 +3,11 @@ import React, { useState,useEffect } from 'react';
 import { Link, useParams} from 'react-router-dom';
 import logo from './Assets/filic.png';
 import Emp_info from './Emp_info';
+
 const Home = () => {
     const [details, setDetails] = useState([]);
-    console.log(details);
+    // console.log(details);
     const { id } = useParams();
-    
-
 
     // http://202.164.213.67/digital_pr/pr-permission/emp_info.php?EMP_CODE=00006239
       useEffect(() => { 
@@ -21,13 +20,15 @@ const Home = () => {
 
 
     return (
-        <div className='justify-center '>
-            <div className='justify-end'>
+        <div className=' '>
+          
+            <div className='text-end'>
                    <Button color="success">
                  <Link to={'/'}>Logout</Link>
                 </Button>
+                     
                  </div>
-            
+         
             
                 <div >
                         {

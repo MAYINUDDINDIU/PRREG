@@ -13,7 +13,6 @@ const Login = () => {
     const info = { userinfo };
     console.log(info);
 
-    const test = '00006235';
 
 
     const confirm_btn = (event) => {
@@ -22,16 +21,20 @@ const Login = () => {
         const userid = event.target.user_id.value;
         const password = event.target.password.value;
 
-
+        // const url = 'https://digitalpr.fareastlife.com/api/login';
         fetch(`http://202.164.213.67/digital_pr/pr-permission/login.php?EMP_CODE=${userid}&&PASSWORD=${password}`)
             .then(Response => Response.json())
             .then(data => setUserinfo(data));
 
-           }
+    }
+    
+
+
+
 
 
     return (
-         <div className='lg:px-60 lg:py-24 lg:mb-12 lg:mt-5  items-center'>
+         <div className='lg:px-48 lg:py-12 lg:mb-12 lg:mt-5  items-center'>
             <div class="shadow-xl lg:py-8 rounded-md grid lg:grid-cols-2 gap-0  justify-center">
                 
                 <div className='flex items-center justify-center'>
