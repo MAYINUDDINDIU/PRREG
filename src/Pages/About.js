@@ -7,16 +7,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const About = ({ info }) => {
-    const [details, setDetails] = useState([]);
-    console.log(details);
+    // const [details, setDetails] = useState([]);
+    // console.log(details);
     const navigate = useNavigate();
 
     
     
 
-    const { EMP_CODE, PASSWORD, success, NAME, DESIG_NAME, DEPT_NAME, ZONE_CODE } = info;
-    console.log(success,EMP_CODE,PASSWORD);
-    const result = success;
+    const { emp_code, status, name, desig_name, dept_name, zone_code,div_code } = info;
+    console.log(emp_code, status, name, desig_name, dept_name, zone_code,div_code);
+    const result = status;
     console.log(result);
 
     // useEffect(() => { 
@@ -29,9 +29,9 @@ const About = ({ info }) => {
 
 
     useEffect(() => {
-        if (result === '1') {
+        if (result === 1) {
             console.log('success');
-            navigate(`/home=${EMP_CODE}`);
+            navigate(`/home=${emp_code}`);
             
             //  window.location.replace('https://fareastislamilife.com');
         } else {

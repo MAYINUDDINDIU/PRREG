@@ -1,33 +1,77 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
-import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import image from '../Assets/login_banner.jpg';
 import logo from '../Assets/filic.png';
 import About from '../About';
 import Home from '../Home';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
 
-    const [userinfo, setUserinfo] = useState('');
+const [astatement, setaStatement] = useState([]);
+   const navigate = useNavigate();
+
+    const { emp_code, status, name, desig_name, dept_name, zone_code,div_code } = astatement;
+    console.log(emp_code, status, name, desig_name, dept_name, zone_code,div_code);
+    const result = status;
+    console.log(result);
+    // console.log(name);
 
 
-    const info = { userinfo };
-    console.log(info);
+
+    // const confirm_btn = (event) => {
+
+    //     event.preventDefault();
+    //     const userid = event.target.user_id.value;
+    //     const password = event.target.password.value;
+
+    //     // const url = 'https://digitalpr.fareastlife.com/api/login';
+    //     fetch(`http://202.164.213.67/digital_pr/pr-permission/login.php?EMP_CODE=${userid}&&PASSWORD=${password}`)
+    //         .then(Response => Response.json())
+    //         .then(data => setUserinfo(data));
+
+    // }
 
 
-
-    const confirm_btn = (event) => {
-
+        const handleAdded = event => {
         event.preventDefault();
-        const userid = event.target.user_id.value;
+        const emp_code = event.target.user_id.value;
         const password = event.target.password.value;
+        const android_id = '5942';
+        
+              
+            const addItem = { emp_code, password, android_id };
+            // console.log(addItem);
 
-        // const url = 'https://digitalpr.fareastlife.com/api/login';
-        fetch(`http://202.164.213.67/digital_pr/pr-permission/login.php?EMP_CODE=${userid}&&PASSWORD=${password}`)
+        const url = 'https://digitalpr.fareastlife.com/api/login';
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(addItem)
+
+        })
             .then(Response => Response.json())
-            .then(data => setUserinfo(data));
-
+            .then(data => setaStatement(data['user']));
+           
     }
+
+
     
+    useEffect(() => {
+        if (result === 1) {
+            console.log('success');
+            navigate(`/home=${emp_code}`);
+            
+            //  window.location.replace('https://fareastislamilife.com');
+        } else {
+          
+             toast.error(`Opps!Please type proper emp code & password`);
+        }
+    });
+
 
 
 
@@ -45,7 +89,7 @@ const Login = () => {
                         <img className='h-28 shadow-md rounded-full p-2' src={logo} alt="" />
                     </div>
                 
-                   <form  onSubmit={confirm_btn} className="flex flex-col gap-2">
+                   <form  onSubmit={handleAdded} className="flex flex-col gap-2">
                         <div>
                             <div className="mb-1 text-start">
                             <Label>UserID</Label>
@@ -89,11 +133,11 @@ const Login = () => {
 
                 
                 <div>
-                        {
-                userinfo.length === 0 ? <p className='text-center'> </p> :
-                userinfo.map(info => <About key={info.id} info={info}></About>)
+                        {/* {
+                userdata.length === 0 ? <p className='text-center'> </p> :
+                userdata.map(info => <About key={info.id} info={info}></About>)
 
-                    }
+                    } */}
                     
          
                 </div>

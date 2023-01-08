@@ -31,7 +31,7 @@ const All_info = ({ d }) => {
 
                         <div className='mt-0  flex'>
                         <TextInput
-                            className='lg:w-full  mb-2 rounded  '
+                            className='lg:w-full w-full mb-2 rounded  '
                             id="user_id"
                             value={NAME}
                             required={true}
