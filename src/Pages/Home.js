@@ -20,10 +20,10 @@ const Home = () => {
 
 
     return (
-        <div className=' '>
+        <div className='justify-center'>
           
-            <div className='text-end'>
-                   <Button color="success">
+            <div className='justify-center'>
+                <Button color="success">
                  <Link to={'/'}>Logout</Link>
                 </Button>
                      

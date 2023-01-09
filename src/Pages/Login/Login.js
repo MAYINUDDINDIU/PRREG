@@ -9,13 +9,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
 
-const [astatement, setaStatement] = useState([]);
+    const [astatement, setaStatement] = useState(['']);
+    // const [statement, setStatement] = useState([]);
+    // console.log(statement);
    const navigate = useNavigate();
-
+        
+    
     const { emp_code, status, name, desig_name, dept_name, zone_code,div_code } = astatement;
-    console.log(emp_code, status, name, desig_name, dept_name, zone_code,div_code);
-    const result = status;
-    console.log(result);
+    // console.log(emp_code, status, name, desig_name, dept_name, zone_code,div_code);
+    // console.log(result);
     // console.log(name);
 
 
@@ -54,20 +56,21 @@ const [astatement, setaStatement] = useState([]);
 
         })
             .then(Response => Response.json())
-            .then(data => setaStatement(data['user']));
-           
+                .then(data => setaStatement(data['user']));
+                   
     }
+
+    
 
 
     
     useEffect(() => {
-        if (result === 1) {
+        if (status === 1) {
             console.log('success');
             navigate(`/home=${emp_code}`);
-            
-            //  window.location.replace('https://fareastislamilife.com');
-        } else {
           
+        } else {
+            // alert('Please type proper user id & pass');
              toast.error(`Opps!Please type proper emp code & password`);
         }
     });
@@ -78,9 +81,14 @@ const [astatement, setaStatement] = useState([]);
 
 
     return (
-         <div className='lg:px-48 lg:py-12 lg:mb-12 lg:mt-5  items-center'>
+        
+        <div className='lg:px-48 lg:py-12 lg:mb-12 lg:mt-5  items-center'>
+            <div>
+                   <ToastContainer />
+            </div>
+          
             <div class="shadow-xl lg:py-8 rounded-md grid lg:grid-cols-2 gap-0  justify-center">
-                
+                  
                 <div className='flex items-center justify-center'>
                  <img src={image} alt="" />
                 </div>
@@ -131,16 +139,16 @@ const [astatement, setaStatement] = useState([]);
 
                 </div>
 
-                
+{/*                 
                 <div>
-                        {/* {
-                userdata.length === 0 ? <p className='text-center'> </p> :
-                userdata.map(info => <About key={info.id} info={info}></About>)
+                        {
+                astatement.length === 0 ? <p className='text-center'> </p> :
+                astatement.map(info => <About key={info.id} info={info}></About>)
 
-                    } */}
+                    }
                     
          
-                </div>
+                </div> */}
                 </div>
 
         </div>

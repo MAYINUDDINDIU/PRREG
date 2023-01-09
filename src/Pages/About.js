@@ -6,13 +6,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const About = ({ info }) => {
+const About = ({ info } ) => {
     // const [details, setDetails] = useState([]);
     // console.log(details);
     const navigate = useNavigate();
-
-    
-    
 
     const { emp_code, status, name, desig_name, dept_name, zone_code,div_code } = info;
     console.log(emp_code, status, name, desig_name, dept_name, zone_code,div_code);
@@ -28,17 +25,17 @@ const About = ({ info }) => {
     //  });
 
 
-    useEffect(() => {
-        if (result === 1) {
-            console.log('success');
-            navigate(`/home=${emp_code}`);
+    // useEffect(() => {
+    //     if (result === 1) {
+    //         console.log('success');
+    //         navigate(`/home=${emp_code}`);
             
-            //  window.location.replace('https://fareastislamilife.com');
-        } else {
+    //         //  window.location.replace('https://fareastislamilife.com');
+    //     } else {
           
-             toast.error(`Opps!Please type proper emp code & password`);
-        }
-    });
+    //          toast.error(`Opps!Please type proper emp code & password`);
+    //     }
+    // });
     
 
    
