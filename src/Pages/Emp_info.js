@@ -29,21 +29,21 @@ const Emp_info = ({ emp_i }) => {
                  <img className='w-full   p-2' src={logo} alt="" />
                 </div>
                 
-                <div className='shadow-lg p-0 bg-[#54B435]  text-white text-start rounded-md' style={{ textTransform: 'uppercase'}}>
-                    <h1 className='text-lg p-1 lg:ml-2' >USER NAME: {NAME}</h1> 
+                <div className='shadow-lg p-0 bg-[#1faa00]  text-white text-start rounded-md' style={{ textTransform: 'uppercase'}}>
+                    <h1 className=' lg:p-1 p-2 lg:ml-2' >USER NAME: {NAME}</h1> 
                     <hr className='text-white ' />
-                    <h1 className='text-lg p-1 lg:ml-2'>EMP CODE: {EMP_CODE}</h1>
+                    <h1 className=' lg:p-1 p-2 lg:ml-2'>EMP CODE: {EMP_CODE}</h1>
                              <hr className='text-white' />
-                    <h1 className='text-lg p-1 lg:ml-2'>MOBILE: { MOBILE_NUMBER}</h1>
+                    <h1 className='lg:p-1 p-2 lg:ml-2'>MOBILE: { MOBILE_NUMBER}</h1>
                 </div>
 
                 
-                  <div className='shadow-lg  lg:mt-0 mt-2 lg:ml-4 bg-[#54B435] text-white text-start rounded-md' style={{ textTransform: 'uppercase'}}>
-                    <h1 className='text-lg p-1 lg:ml-2'>OFF TYPE: {OFF_TYPE}</h1>
+                  <div className='shadow-lg  lg:mt-0 mt-2 lg:ml-4 bg-[#1faa00] text-white text-start rounded-md' style={{ textTransform: 'uppercase'}}>
+                    <h1 className='lg:p-1 p-2 lg:ml-2'>OFF TYPE: {OFF_TYPE}</h1>
                      <hr className='text-white' />
-                    <h1 className='text-lg p-1 lg:ml-2'>ZONE CODE: {ZONE_CODE}</h1>
+                    <h1 className='lg:p-1 p-2 lg:ml-2'>ZONE CODE: {ZONE_CODE}</h1>
                      <hr className='text-white' />
-                    <h1 className='text-lg p-1 lg:ml-2'>DIV CODE: { DIV_CODE}</h1>
+                    <h1 className='lg:p-1 p-2 lg:ml-2'>DIV CODE: { DIV_CODE}</h1>
                 </div>
                    
                    

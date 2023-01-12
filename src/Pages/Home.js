@@ -3,6 +3,7 @@ import React, { useState,useEffect } from 'react';
 import { Link, useParams} from 'react-router-dom';
 import logo from './Assets/filic.png';
 import Emp_info from './Emp_info';
+import Navbar from './Navbar/Navbar';
 
 const Home = () => {
     const [details, setDetails] = useState([]);
@@ -21,13 +22,13 @@ const Home = () => {
 
     return (
         <div className='justify-center'>
-          
-            <div className='justify-center'>
+              <Navbar/>
+            {/* <div className='justify-center'>
                 <Button color="success">
                  <Link to={'/'}>Logout</Link>
                 </Button>
                      
-                 </div>
+                 </div> */}
          
             
                 <div >

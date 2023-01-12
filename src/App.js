@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Login from './Pages/Login/Login';
 import Test from './Pages/Test/Test';
+import Reg_information from './Pages/Information/Reg_information';
 
 
 function App() {
@@ -13,8 +14,12 @@ function App() {
 
       <Routes>
 
-        <Route path='/home=:id' element={<Home />}>HOME</Route>
+        <Route path='/home=:id' element={<Home />}>HOME
+        
+        
+        </Route>
         <Route path='/about' element={<About />} >ABOUT US</Route>
+        <Route path='/info' element={<Reg_information />} >Info</Route>
         <Route path='/' element={<Login/>} >Login</Route>
        <Route path='/test' element={<Test/>} >Test</Route>
       </Routes>

@@ -61,9 +61,6 @@ const Login = () => {
     }
 
     
-
-
-    
     useEffect(() => {
         if (status === 1) {
             console.log('success');
@@ -76,15 +73,12 @@ const Login = () => {
     });
 
 
-
-
-
-
     return (
         
         <div className='lg:px-48 lg:py-12 lg:mb-12 lg:mt-5  items-center'>
+              {/* <ToastContainer /> */}
             <div>
-                   <ToastContainer />
+                 
             </div>
           
             <div class="shadow-xl lg:py-8 rounded-md grid lg:grid-cols-2 gap-0  justify-center">
