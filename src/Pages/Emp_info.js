@@ -10,17 +10,33 @@ const Emp_info = ({ emp_i }) => {
         const [empData, SetEmpData] = useState([]);
         // console.log(empData);
 
-    const information = (event) => {
+    // Previous 
+    // const information = (event) => {
+    //     event.preventDefault();
+    //     const emp_code = (event.target.user_id.value);
+    //     // console.log(emp_id);
+    //     fetch(`http://202.164.213.67/digital_pr/pr-permission/information.php?EMP_CODE=${emp_code}`)
+    //         .then(Response => Response.json())
+    //         .then(data => SetEmpData(data))
+
+    // }   // Previous 
+    
+
+       const information = (event) => {
         event.preventDefault();
         const emp_code = (event.target.user_id.value);
-        // console.log(emp_id);
-        fetch(`http://202.164.213.67/digital_pr/pr-permission/information.php?EMP_CODE=${emp_code}`)
-            .then(Response => Response.json())
-            .then(data => SetEmpData(data))
+       const getinfo = async () => {
+      const req = await fetch(`http://202.164.213.67/digital_pr/pr-permission/information.php?EMP_CODE=${emp_code}`);
+      const getres = await req.json();
+    //   console.log(getres);
+           
+      SetEmpData(await getres);
 
-            }
+    }
+    getinfo();
 
-
+    }
+     
 
     return (
         <div>
