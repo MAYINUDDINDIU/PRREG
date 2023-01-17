@@ -31,12 +31,12 @@ const Reg_information = () => {
                </div>
         
         <div className=" lg:w-full align-items-center">
-          <div className='flex lg:px-12 justify-center'>
+          <div className='flex lg:px-6 justify-center'>
            <h2 className='bg-[#1b5e20] w-48 text-start text-white rounded p-2 mt-1'>
                NAME
             </h2>
 
-              <h2 className='bg-[#1b5e20] w-32 ml-1 text-center text-white rounded p-2 mt-1'>
+              <h2 className='bg-[#1b5e20] w-24 ml-1 text-center text-white rounded p-2 mt-1'>
                EMP CODE
             </h2>
 

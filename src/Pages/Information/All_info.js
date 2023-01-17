@@ -4,32 +4,32 @@ import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 const All_info = ({ d }) => {
 
-    const { NAME, EMP_CODE, EMP_DESIG,EMP_DESIG_CODE, EMP_DEPT, DEPT_CODE, EMP_MOBILE, ZONE_CODE_N,
+  const { NAME, EMP_CODE, EMP_DESIG, EMP_DESIG_CODE, EMP_DEPT, DEPT_CODE, EMP_MOBILE, ZONE_CODE_N,
     ZONE_NAME_N, SC_CODE_N, SC_NAME_N, success } = d;
     
-   const [project, setProject] = useState([]);
-   const [prjid, setprjid] = useState('');
-   const prj_name = prjid;
-   const [country, setCountry] = useState([]);
-   const [countryid, setCountryid] = useState('');
+  const [project, setProject] = useState([]);
+  const [prjid, setprjid] = useState('');
+  const prj_name = prjid;
+  const [country, setCountry] = useState([]);
+  const [countryid, setCountryid] = useState('');
   const z_name = countryid;
   const [branchid, setbaranchid] = useState('');
   const branch_code = branchid;
   // console.log(branch_code);
-   const [stetes, setSat] = useState([]);
+  const [stetes, setSat] = useState([]);
 
-    const [zone_info, Setzoninfo] = useState(['']);
-    const [branch_info, Setbranchinfo] = useState(['']);
+  const [zone_info, Setzoninfo] = useState(['']);
+  const [branch_info, Setbranchinfo] = useState(['']);
 
 
-    const [type, setOption] = useState('EKOK');
+  const [type, setOption] = useState('EKOK');
 
-    function handleChange(event) {
+  function handleChange(event) {
     setOption(event.target.value)
-    }
+  }
 
 
-    useEffect(() => {
+  useEffect(() => {
     const getPRJ = async () => {
       const req = await fetch('prj.json');
       const getres = await req.json();
@@ -50,7 +50,7 @@ const All_info = ({ d }) => {
  
 
     
-      useEffect(() => {
+  useEffect(() => {
     const getcountry = async () => {
       const req = await fetch(`http://202.164.213.67/Digital_pr/pr-permission/zone_name.php?PTYPE=${prj_name}`);
       const getres = await req.json();
@@ -63,15 +63,15 @@ const All_info = ({ d }) => {
 
   }, [prjid]);
     
-    const handlecountry = (event) => {
+  const handlecountry = (event) => {
     const getcoutryid = event.target.value;
     const myArray = getcoutryid.split(" ");
     const z_code = (myArray[1]);
     setCountryid(z_code);
     event.preventDefault();
-    }
+  }
     
-      useEffect(() => {
+  useEffect(() => {
 
     const getstate = async () => {
       const resstate = await fetch(`http://202.164.213.67/Digital_pr/PR-permission/branch_name.php?PTYPE=${prj_name}&&ZONE_CODE=${z_name}`);
@@ -82,110 +82,197 @@ const All_info = ({ d }) => {
     }
     getstate();
 
-      }, [countryid]);
+  }, [countryid]);
   
   
   
   
-     const branch_handler = (event) => {
+  const branch_handler = (event) => {
     const getbid = event.target.value;
     // const myArray = getbid.split(" ");
     // const b_code = (myArray[1]);
     setbaranchid(getbid);
     event.preventDefault();
-    }
+  }
+  
+
+
+
+
+      //******Handle post data in database********
+  const handleSubmit = event => {
+    event.preventDefault();
+    // const ID = '63';
+    const emp_code = (event.target.emp_code.value);
+    const name = (event.target.name_id.value);
+    const dept_code = (event.target.dept_code.value);
+    const dept_name = (event.target.emp_dept.value);
+    const desig_code = (event.target.desig_code.value);
+    const desig_name = (event.target.emp_desig.value);
+    const password = (event.target.password.value);
+    const password_confirmation = password;
+    const email = "";
+    const prj_code = prj_name;
+    const sc_code = '141';
+    const off_type = "2";
+    const div_code = '103';
+    const android_id = (event.target.android_id.value);
+    const mobile_number = (event.target.emp_mobile.value);
+    const dcs_org_code = branch_code;
+    const zone_code = z_name;
+
+
+    // toast("Successfully Saved Your Application");
+
+    console.log( emp_code, name, dept_code,dept_name, desig_code, desig_name, password,password_confirmation
+      , email, prj_code, android_id, mobile_number, dcs_org_code, zone_code,sc_code,off_type,div_code);
+
+    const addItem = {emp_code, name, dept_code,dept_name, desig_code, desig_name, password,password_confirmation
+      , email, prj_code, android_id, mobile_number, dcs_org_code, zone_code,sc_code,off_type,div_code
+    };
+    // const url = `https://digitalpr.fareastlife.com/api/register`;
+
+
+    fetch("https://digitalpr.fareastlife.com/api/register", {
+  "method": "POST",
+  "headers": {
+    "x-rapidapi-host": "digitalpr.fareastlife.com",
+    "x-rapidapi-key": "apikey",
+    "content-type": "application/json",
+    "accept": "application/json"
+  },
+      "body": JSON.stringify({
+        emp_code:emp_code,
+        name: name,
+        dept_code: dept_code,
+        dept_name: dept_name,
+        desig_code: desig_code,
+        desig_name: desig_name,
+        password: password,
+        password_confirmation: password_confirmation,
+        email: email,
+        prj_code: prj_code,
+        android_id: android_id,
+        mobile_number: mobile_number,
+        dcs_org_code: dcs_org_code,
+        zone_code: zone_code,
+        sc_code: sc_code,
+        off_type: off_type,
+        div_code: div_code
+    
+  })
+})
+.then(response => response.json())
+.then(response => {
+  console.log(response)
+event.target.reset()
+})
+.catch(err => {
+  console.log(err);
+});
+
+    event.target.reset();
+  }
+
+// const test = event => { 
+// event.preventDefault();
+//     // const ID = '63';
+//     const emp_code = (event.target.emp_code.value);
+//     const name = (event.target.name_id.value);
+//     const dept_code = (event.target.dept_code.value);
+//     const dept_name = (event.target.emp_dept.value);
+//     const desig_code = (event.target.desig_code.value);
+//     const desig_name = (event.target.emp_desig.value);
+//     const password = (event.target.password.value);
+//     const password_confirmation = password;
+//     const email = "abcd@gmail.com";
+//     const prj_code = prj_name;
+//     const sc_code = '141';
+//     const off_type = "2";
+//     const div_code = '103';
+//     const android_id = (event.target.android_id.value);
+//     const mobile_number = (event.target.emp_mobile.value);
+//     const dcs_org_code = branch_code;
+//     const zone_code = z_name;
+
+
+//         // toast("Successfully Saved Your Application");
+
+//       // console.log( emp_code, NAME, DEPT_CODE, DEPT_NAME, DESIG_CODE, DESIG_NAME, PASSWORD
+//       // ,EMAIL,PRJ_CODE,ANDROID_ID,MOBILE_NUMBER,DCS_ORG_CODE,ZONE_CODE);
+
+//     const addItem = {
+//       emp_code, name, dept_code, dept_name, desig_code, desig_name, password,password_confirmation
+//       ,email,prj_code,android_id,mobile_number,dcs_org_code,zone_code,sc_code,off_type,div_code};
+//      console.log(addItem);
+
+//   // creates entity
+// fetch("https://digitalpr.fareastlife.com/api/register", {
+//   "method": "POST",
+//   "headers": {
+//     "x-rapidapi-host": "digitalpr.fareastlife.com",
+//     "x-rapidapi-key": "apikey",
+//     "content-type": "application/json",
+//     "accept": "application/json"
+//   },
+//  body: JSON.stringify(addItem)
+// })
+// .then(response => response.json())
+// .then(response => {
+//   console.log(response)
+// })
+// .catch(err => {
+//   console.log(err);
+// });
+
+//   }
+  
+
+
   
   
-    //******Handle post data in database********
-    const handleSubmit = event => {
-        event.preventDefault();
-        const EMP_ID = (event.target.emp_code.value);
-        const NAME = (event.target.name_id.value);
-        const DEPT_CODE = (event.target.dept_code.value);
-        const DEPT_NAME = (event.target.emp_dept.value);
-       const DESIG_CODE = (event.target.desig_code.value);
-        const DESIG_NAME = (event.target.emp_desig.value);
-        // const MOBILE = (event.target.EMP_MOBILE.value);
-        // const DATE_ = (event.target.DATE_.value);
-        // const FROM_TIME = (event.target.FROM_TIME.value);
-        // const END_TIME = (event.target.END_TIME.value);
-        // const LEAVE_REASON = (event.target.LEAVE_REASON.value);
-        // const STATUS = 'N';
-
-
-        // toast("Successfully Saved Your Application");
-
-        // console.log(EMP_NAME, emp_id, emp_designation, emp_dept, l_date, l_from_time, l_to_time, reason);
-        console.log(NAME, DEPT_CODE,DEPT_NAME, EMP_ID,prj_name,DESIG_CODE,DESIG_NAME,z_name,branch_code);
-
-        // const addItem = {
-        //     NAME, DEPT_CODE, DEPT_NAME, DESIG, LEAVE_REASON, EMP_ID, STATUS, FROM_TIME, END_TIME, DATE_
-        // };
-        // const url = `http://202.164.213.67/mat/short_leave_insert.php`;
-        // fetch(url, {
-        //     method: "POST",
-        //     headers: {
-        //         "content-type": "application/json"
-        //     },
-        //     body: JSON.stringify(addItem)
-        // })
-        //     .then(res => res.json())
-        //     .then(result => {
-
-        //         // if (result.status = true) {
-
-        //         //     toast(`${NAME} Successfully Saved Your Application`);
-        //         // }
-        //         // else {
-        //         //     toast.error(`${NAME} Don,t Saved Your Application`)
-        //         // }
-
-        //         console.log(result);
-        //         event.target.reset()
-
-        //         // Navigate('/');
-        //     })
-    }
-    //******Handle post data in database********
   
+
+
+
   
   
   
     
 
-    // const [z_type, setZ_Option] = useState('');
-    // let text =z_type;
-    // const myArray = text.split(" ");
-    // const z_code = (myArray[1]);
-    // function zone_change(event) {
-    // setZ_Option(event.target.value)
-    // }
+  // const [z_type, setZ_Option] = useState('');
+  // let text =z_type;
+  // const myArray = text.split(" ");
+  // const z_code = (myArray[1]);
+  // function zone_change(event) {
+  // setZ_Option(event.target.value)
+  // }
 
 
-    // useEffect(() => {
-    //  fetch(`http://202.164.213.67/Digital_pr/pr-permission/zone_name.php?PTYPE=${type}`)
-    //         .then(Response => Response.json())
-    //         .then(data => Setzoninfo(data['ZONE_NAME']));
+  // useEffect(() => {
+  //  fetch(`http://202.164.213.67/Digital_pr/pr-permission/zone_name.php?PTYPE=${type}`)
+  //         .then(Response => Response.json())
+  //         .then(data => Setzoninfo(data['ZONE_NAME']));
         
          
-    // });
+  // });
 
 
 
-    // useEffect(() => {
-    //  fetch(`http://202.164.213.67/Digital_pr/PR-permission/branch_name.php?PTYPE=${type}&&ZONE_CODE=${z_code}`)
-    //         .then(Response => Response.json())
-    //         .then(data => Setbranchinfo(data['BRANCH_NAME']));
+  // useEffect(() => {
+  //  fetch(`http://202.164.213.67/Digital_pr/PR-permission/branch_name.php?PTYPE=${type}&&ZONE_CODE=${z_code}`)
+  //         .then(Response => Response.json())
+  //         .then(data => Setbranchinfo(data['BRANCH_NAME']));
             
-    //  });
+  //  });
 
      
-    // var today = new Date();
-    // var ddd = String(today.getDate()).padStart(2, '0');
-    // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    // var yyyy = today.getFullYear();
+  // var today = new Date();
+  // var ddd = String(today.getDate()).padStart(2, '0');
+  // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  // var yyyy = today.getFullYear();
 
-    // today = ddd + '-' + mm + '-' + yyyy;
+  // today = ddd + '-' + mm + '-' + yyyy;
 
 
 
@@ -197,9 +284,9 @@ const All_info = ({ d }) => {
                 <form onSubmit={handleSubmit}>
 
             <div  className="mb-2 block text-start">
-                        <Label className=''
+                        {/* <Label className=''
                         value="EMP NAME"
-                      />
+                      /> */}
                         <TextInput
                             className='lg:w-full w-full lg:mb-2 font-bold text-black  mb-1 rounded'
                             id="name_id"
@@ -300,14 +387,15 @@ const All_info = ({ d }) => {
                           <TextInput
                             className='lg:w-96   rounded'
                             id="password"
-                                   type="password"
+                            type="password"
                             placeholder="Type Password"
                             required={true}
                         />
                              <TextInput
                             className='lg:w-96  lg:ml-2 ml-1 rounded'
                             id="android_id"
-                          placeholder="Type Android ID"
+                            type="text"
+                            placeholder="Type Android ID"
                             required={true}
                             />
                     </div>
@@ -347,8 +435,12 @@ const All_info = ({ d }) => {
                         </Button>
                       </div>
                       
-                  
-                </form>
+                          {/* <Button className='mb-2 w-full' onClick={test} color="success" type="submit">
+                            Submit
+                        </Button> */}
+          </form>
+          
+      
 
                 {/* <button onClick={notify}>Notify !</button> */}
                 {/* <ToastContainer /> */}
