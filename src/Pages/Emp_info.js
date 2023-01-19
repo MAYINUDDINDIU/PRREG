@@ -22,7 +22,7 @@ const Emp_info = ({ emp_i }) => {
     // }   // Previous 
     
 
-       const information = (event) => {
+     const information = (event) => {
         event.preventDefault();
         const emp_code = (event.target.user_id.value);
        const getinfo = async () => {
@@ -95,7 +95,7 @@ const Emp_info = ({ emp_i }) => {
                   
                     {
                         empData.length === 0 ? <p className='text-center'></p> :
-                            empData.map(d => <All_info key={d.id} d={d}></All_info>)
+                        empData.map(d => <All_info key={d.id} d={d}></All_info>)
 
                     }
                        
