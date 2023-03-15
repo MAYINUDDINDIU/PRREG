@@ -43,7 +43,7 @@ const Login = () => {
         const android_id = '5942';
         
               
-            const addItem = { emp_code, password, android_id };
+        const addItem = { emp_code, password, android_id };
             // console.log(addItem);
 
         const url = 'https://digitalpr.fareastlife.com/api/login';

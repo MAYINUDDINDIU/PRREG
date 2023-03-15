@@ -66,9 +66,11 @@ const getres = await req.json();
 
 
 
-            
+            <div className='px-80'>
+
            
-            <div className='shadow-lg lg:px-96 mt-2'>
+           
+            <div className='shadow-lg  lg:px-6 mt-2'>
            <h2 className='p-3 font-bold drop-shadow text-dark text-xl'>EDIT EMPLOYEE PR PERMISSION </h2>
                
          <div className='flex'>
@@ -79,9 +81,10 @@ const getres = await req.json();
               class="form-control  w-96 px-4 py-2 text-md font-normal text-white bg-[#1e88e5]  border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleFormControlInput2"
              placeholder="NAME"
-               
               value={name}
-            />
+              
+                />
+                
                 </div>
                     <div class="mb-1 ml-2">
                                     <h6 className='text-start'>EMP CODE</h6>
@@ -191,7 +194,7 @@ const getres = await req.json();
 
 
 
-            
+             </div>
             </div>
 
     );

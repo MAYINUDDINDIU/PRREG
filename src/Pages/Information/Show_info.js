@@ -69,6 +69,26 @@ fetch("https://digitalpr.fareastlife.com/api/user/user-info", {
   }
 
 
+// Delete permission==============================================
+     const handleDelete= EMP_CODE => {
+        const proceed = window.confirm('Are you sure?Approve This');
+        if (proceed) {
+            const url = `http://202.164.213.67/Digital_pr/pr-permission/delete.php?EMP_CODE=${EMP_CODE}`;
+            fetch(url, {
+                method: "UPDATE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    // const rest = products.filter(product => product._id !== id);
+                    // console.log(rest)
+                    // setProducts(rest);
+                })
+        }
+    }
+// Delete permission==============================================
+
+
 
 
     
@@ -103,7 +123,7 @@ fetch("https://digitalpr.fareastlife.com/api/user/user-info", {
                 {ZONE_CODE}
             </h2>
     
-                <h2 className='bg-[#2e7d32] w-32 text-center text-white rounded p-2 ml-1 mt-1'>
+                <h2 className='bg-[#2e7d32] w-60 text-center text-white rounded p-2 ml-1 mt-1'>
                 {DCS_ORG_CODE}
             </h2>
                    <h2 className='bg-[#2e7d32] w-32 text-center text-white rounded p-2 ml-1 mt-1'>
@@ -114,19 +134,19 @@ fetch("https://digitalpr.fareastlife.com/api/user/user-info", {
 
             <div class="">
               
-                    <Link to={`/edit=${EMP_CODE}`}>  <button type="button"  class="w-20 mt-1 ml-1 px-6 ml-1 py-2.5 bg-[#2e7d32] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                    <Link to={`/edit=${EMP_CODE}`}>  <Button type="button" className='w-20 mt-1 rounded-none ml-1' color="success" >
                EDIT
-                </button></Link>  
+                </Button></Link>  
+
+                
                 
             </div>
-
-
 
              {/* <Button className='w-20 mt-1 rounded-none ml-1' color='success' >
                 EDIT  { EMP_CODE}
             </Button>  */}
             
-             <Button className='w-20 mt-1 rounded-none ml-1' color='failure' >
+             <Button onClick={() => handleDelete(EMP_CODE)} className='w-20 mt-1 rounded-none ml-1' color='failure' >
                DELETE
             </Button> 
             {/* <Button className='w-48 mt-1 rounded-none bg-[#2e7d32]'>

@@ -15,7 +15,7 @@ const All_info = ({ d }) => {
   const z_name = countryid;
   const [branchid, setbaranchid] = useState('');
   const branch_code = branchid;
-  // console.log(branch_code);
+  console.log(branch_code);
   const [stetes, setSat] = useState([]);
 
   const [zone_info, Setzoninfo] = useState(['']);
@@ -291,7 +291,7 @@ event.target.reset()
                             className='lg:w-full w-full lg:mb-2 font-bold text-black  mb-1 rounded'
                             id="name_id"
                             value={NAME}
-                            disabled
+                       
                             required={true}
                             bg-gray-500 bg-clip-padding
                            
@@ -375,10 +375,9 @@ event.target.reset()
                               
                                    {
                                     stetes.map((st, index) => (
-                                      <option key={index} value={st.state_id}>{st.OFF_NAME + "-"}{st.OFF_CODE}</option>
-                                      
+                                      <option key={index} value={st.state_id}>{st.OFF_NAME + "-"}{st.OFF_CODE}</option>    
                                     ))
-                                }
+                                   }
                             </select>
                            </div>
                     

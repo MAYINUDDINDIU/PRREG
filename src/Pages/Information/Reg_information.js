@@ -55,7 +55,7 @@ const Reg_information = () => {
                ZONE CODE
             </h2>
     
-                <h2 className='bg-[#1b5e20] w-32 text-center text-white rounded p-2 ml-1 mt-1'>
+                <h2 className='bg-[#1b5e20] w-60 text-center text-white rounded p-2 ml-1 mt-1'>
                ORG CODE
             </h2>
                 <h2 className='bg-[#1b5e20] w-32 text-center text-white rounded p-2 ml-1 mt-1'>
